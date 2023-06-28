@@ -100,13 +100,19 @@ for (let i = 0; i < posts.length; i++) {
             </div>
         </div>`
     postList.append(postContainer);
-
     const likeButtons = document.querySelectorAll('.like-button');
+    
+    let postId = 0;
+    const likedPosts = [];
+    
+    
 
     likeButtons[i].addEventListener('click', 
     function(){
-        
-        console.log('likeeed');
+        postId = document.querySelector('a[data-postid="${i+1}"]');;
+        console.log('postId', postId);
+        likedPosts.push(postId);
+        console.log('liked');
         postContainer.innerHTML =  
         `<div class="post">
             <div class="post__header">
@@ -138,8 +144,10 @@ for (let i = 0; i < posts.length; i++) {
                 </div> 
             </div>
         </div>`
-
+        console.log('likedPosts', likedPosts)
     })
+
+    
 
 }
 
