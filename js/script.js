@@ -62,7 +62,6 @@ const posts = [
 
 const postList = document.getElementById('container');
 
-
 for (let i = 0; i < posts.length; i++) {
     const singlePost = posts[i];
     const postContainer = document.createElement('div');
@@ -116,12 +115,14 @@ for (let i = 0; i < posts.length; i++) {
             event.preventDefault();
             
             if(!this.classList.contains('like-button--liked')){
-                this.classList.add('like-button--liked');
 
+                this.classList.add('like-button--liked');
                 const postId = parseInt(this.getAttribute('data-postid'));
                 likedPosts.push(postId);
                 console.log('postid', postId);
-            
+                const likeCounter = document.getElementById(`like-counter-${singlePost.id}`);
+                let currentLikeNumber = parseInt(likeCounter.innerHTML);
+                likeCounter.innerHTML = currentLikeNumber + 1;
             }
 
             console.log('liked');
